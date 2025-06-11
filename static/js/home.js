@@ -13,6 +13,11 @@ window.addEventListener("DOMContentLoaded", async () => {
   setupBottomSheetEvents();
   attachEditBtnHandler();
 
+  const scheduleList = document.querySelector(".nav-icon2");
+    if (scheduleList) {
+      scheduleList.style.opacity = 0.5;
+    }
+
   const form = document.getElementById("todoForm");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -172,12 +177,15 @@ function renderSchedules(selectedDate) {
 
     card.className = "schedule-card";
     card.innerHTML = `
-      <div class="schedule-checkbox">
-        <input type="checkbox" class="check-task" data-id="${item.id}">
-        <span class="checkmark"></span>
+       <div class = "schedule-left">
+        <div class="prior-icon">${iconHtml}</div>
+        <div class="schedule-checkbox">
+          <input type="checkbox" class="check-task" data-id="${item.id}" ${item.is_checked ? "checked" : ""}>
+          <span class="checkmark"></span>
+        </div>
       </div>
       <div class="schedule-info">
-        <div class="schedule-time">${iconHtml}${item.time}</div>
+        <div class="schedule-time">${item.time}</div>
         <div class="schedule-title">${item.title}</div>
         <div class="schedule-memo">${item.memo}</div>
       </div>

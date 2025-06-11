@@ -34,10 +34,11 @@
 }
 
 .calendar-header {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    transform: translateY(-10px);
 
 }
 
@@ -71,14 +72,14 @@
 .week-calendar.dragging {
     cursor: grabbing;
     user-select: none;
-    background-color: #fafafa;
+    background-color: #fff;
     user-select: none;
 }
 
 .day-box {
     flex: 0 0 calc((100% - 48px) / 7);
     box-sizing: border-box;
-    width: calc((100% - 48px) / 7);
+    width: 44px;
     text-align: center;
     border-radius: 16px;
     cursor: pointer;
@@ -87,9 +88,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 59px; 
-        box-sizing: border-box!important;
-
+    height: 59px;
 }
 
 .day-box .weekday {
@@ -137,8 +136,9 @@
 }
 
 /*-----------일정 리스트-----------*/
+
 .required-placeholder::placeholder {
-  color: red;
+    color: red;
 }
 
 .schedule-list {
@@ -157,12 +157,14 @@
     margin-bottom: 0px;
     touch-action: pan-y;
     cursor: pointer;
+    background-color: #fff;
+
 }
 
 .schedule-list.dragging {
     cursor: grabbing;
     user-select: none;
-    background-color: #fafafa;
+    background-color: #fff;
     user-select: none;
 }
 
@@ -192,6 +194,19 @@
     align-items: center;
     display: flex;
     gap: 10px;
+}
+
+.schedule-left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/*-----우선순위---*/
+.prior-icon {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 13px;
 }
 
 .schedule-checkbox {
@@ -240,6 +255,10 @@
     margin-bottom: 16px;
 }
 
+.space {
+    color: transparent;
+}
+
 .schedule-title {
     flex: 1 0 0;
     font-size: 14px;
@@ -275,54 +294,46 @@
 }
 
 /*하위 바---------------*/
-.floating-add-btn {
+/*navbar.css*/
+
+/*수정/삭제 툴바*/
+.toolbar {
     position: absolute;
-    bottom: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 56px;
-    height: 56px;
-    background-color: #006FFD;
-    border: none;
-    color: white;
-    font-size: 36px;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 121px;
+    height: 76px;
+    top: 30px;
+    right: 8px;
+    background: white;
+    border: 1px solid var(--gray-30);
+    border-radius: 10px;
+    padding: 2px 0px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
 }
 
-.bottom-nav {
-    position: absolute;
-    bottom: 0;
+.toolbar.hidden {
+    display: none;
+}
+
+.delete-btn {
+    border-top: 1.5px solid var(--gray-30) !important;
+    color: #F55549 !important;
+}
+
+.edit-btn,
+.delete-btn {
+    border: none;
+    background-color: transparent;
     width: 100%;
-    height: 132px;
-    padding: 28px 0 48px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav-item {
-    background: none;
-    border: none;
-    padding: 0;
-    width: auto;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.plus-circle {
-    height: 56px;
-    width: 56px;
-    margin: 0 46px;
-}
-
-.home-button,
-.profile-button {
-    width: 48px;
-    height: 40px;
+    height: 100%;
+    text-align: start;
+    padding: 10px 14px;
+    color: var(--gray-80);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
 }
 
 /*-------수정/삭제(모달)----------*/
@@ -396,10 +407,3 @@
     display: none;
 }
 
-/*-----우선순위---*/
-.priority-icon {
-    width: 18px;
-    height: 18px;
-    margin-right: 6px;
-    vertical-align: middle;
-}
